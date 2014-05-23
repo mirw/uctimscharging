@@ -1,0 +1,29 @@
+The UCT IMS Charging System - The IPtv Charging Trigger Function (CTF)
+----------------------------------------------------------------------
+This software is released under the GNU Public licence. It comes without any kind of warranty.
+Thus, the authors are indemnified of any liability.
+
+The UCT IMS Charging system is to be used with the Fokus IMS Core. This release has been tested on 
+Ubuntu Hardy and the UCT IMS client ver 1.0.12
+
+1. INSTALLATION
+To install the server from the sources: install the required packages
+Type:
+make
+in the root directory.
+
+2. SETUP
+Configure the IP address and port number the CTF listens for incoming credit control requests
+The IP address and port number of the peer Diameter nodes (the CDF and OCS) should also be configured.
+A default configuration is given in uctimscharging-iptv.xml
+
+3. USAGE
+Type:
+
+./uctimscharging-iptv
+in the roor directory.
+
+4. OFFLINE AND ONLINE CHARGING
+The required charging type may be set in the function get_charge_type_from_sdp() in charging.c 
+To enforce online charging set ch_type = 1;
+To enforce offline charging set ch_type = 2;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 	This is an example of the file that the server looks for when starting the UCT IMS IPTV Application Server
+     	The key is any text between the SIP: and the @domain that the server recieves in an invite.
+	So for example sip:channel1@open-ims.test will be parsed to channel1. 
+	
+	The value is the rtsp address of the server along with the path of the media file the client is requesting.
+-->
+
+<!--	What follows is some example key-value pairs. Replace these with real files that you have on your network
+-->
+<key-value_pairs>
+
+<key-value_pair>
+	<key>channel1</key>
+	<value>rtsp://tv.open-ims.test:8000/channel1</value>
+</key-value_pair>
+
+<key-value_pair>
+	<key>channel2</key>
+	<value>rtsp://tv.open-ims.test:8000/channel2</value>
+</key-value_pair>
+
+<key-value_pair>
+	<key>channel3</key>
+	<value>rtsp://tv.open-ims.test:8000/channel3</value>
+</key-value_pair>
+
+</key-value_pairs>

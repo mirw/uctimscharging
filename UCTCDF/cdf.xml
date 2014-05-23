@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DiameterPeer 
+	FQDN="cdf.open-ims.test" 
+	Realm="open-ims.test" 
+	Vendor_Id="10415" 
+	Product_Name="CDiameterPeer" 
+	AcceptUnknownPeers="1" 
+	DropUnknownOnDisconnect="1" 
+	Tc="30" 
+	Workers="4" 
+	QueueLength="32"
+>
+	
+	<Peer FQDN="iptv.open-ims.test" Realm="open-ims.test"  port="3871" />
+	
+	
+	<Acceptor port="3892"  bind="127.0.0.1" />
+	
+	<Auth id="16777218" vendor="10415"/><!-- 3GPP Rf -->
+	
+		
+	
+</DiameterPeer>

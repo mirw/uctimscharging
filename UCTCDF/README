@@ -1,0 +1,25 @@
+The UCT IMS Charging Data Function (CDF)
+----------------------------------------
+This software is released under the GNU Public licence. It comes without any kind of warranty.
+Thus, the authors are indemnified of any liability.
+
+The UCT IMS Charging Data Function is to be used with the Fokus IMS Core. This release has been tested on 
+Ubuntu Hardy and the UCT IMS client ver 1.0.12
+
+1. INSTALLATION
+To install the server from the sources: install the required packages
+Type:
+make
+in the root directory.
+
+2. SETUP
+Configure the IP address and port number the CDF listens for incoming credit control requests
+The IP address and port number of the peer Diameter node (the Charging Trigger Function) should also be configured.
+A default configuration is given in cdf.xml
+
+3. USAGE
+Type:
+
+./uctimscdf
+in the root directory.
+
