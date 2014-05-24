@@ -68,10 +68,10 @@
 #define IMS_Ph	16777217	/**< Sh interface between PresenceServer and HSS*/
 #define IMS_Rx  16777236	/**< Rx interface between P-CSCF and PCRF 		*/
 #define IMS_Gx	16777224	/**< Gx interface between PCRF and PCEF 		*/
+#define IMS_Rf  3		/**< Rf interface between CTF and CDF			*/
 
 
 /* these are yet to be defined, but until then...*/
-#define IMS_Rf  16777218    /**< Rf interface between CTF and CDF        */
 #define IMS_Ro  16777256    /**< Ro interface between CTF and OCS        */
 /* end of those i defined  */
 
