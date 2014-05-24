@@ -54,8 +54,8 @@ AAAMessage* Rf_ACA( AAAMessage * acr)
 	}
 	
 	if (Rf_get_accounting_record_type(acr, &acr_data)){ //Retrieves accounting event type: START=1, INTERIM=2, STOP=3, EVENT=4
-		Rf_get_call_record_id(acr, &acr_avp);
-		Rf_get_subscriber(acr, &user_avp);
+		Rf_get_accounting_record_number(acr, &acr_avp);
+		Rf_get_user(acr, &user_avp);
 
 		switch (acr_data){
 			case START:
@@ -88,15 +88,15 @@ AAAMessage* Rf_ACA( AAAMessage * acr)
 		LOG(L_DBG,"Rf_ACA: Adding accounting record type %d\n",acr_data);			
 	}else {LOG(L_ERR,"Rf_ACA: Accounting record Type AVP not found\n");}
 
-	if (Rf_get_call_record_id(acr, &acr_avp))
+	if (Rf_get_accounting_record_number(acr, &acr_avp))
 	Rf_add_Call_Record_Id(aca_msg, acr_avp);
 
-	if (Rf_get_subscriber(acr, &user_avp)){
+	if (Rf_get_user(acr, &user_avp)){
 		user_avps.s = user_avp;
 		user_avps.len = strlen(user_avps.s);
 		Rf_add_subscriber(aca_msg, user_avps);	
-		LOG(L_DBG,"Rf_ACA: Adding subscriber\n");			
-	}else {LOG(L_ERR,"Rf_ACA: Subscriber AVP not found\n");}
+		LOG(L_DBG,"Rf_ACA: Adding User-Name\n");
+	}else {LOG(L_ERR,"Rf_ACA: User-Name AVP not found\n");}
 
 	Rf_add_Credit_onceoff(aca_msg, onceoff_credit);
 	Rf_add_Credit_persec(aca_msg, persec_credit);
