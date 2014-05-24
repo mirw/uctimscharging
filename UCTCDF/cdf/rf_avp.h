@@ -28,10 +28,10 @@
 #include "../cdp/cdp_load.h"
 #include "../cdp/utils.h"
 
-#define START 1
-#define INTERIM 2
-#define STOP 3
-#define EVENT 4
+#define EVENT 1
+#define START 2
+#define INTERIM 3
+#define STOP 4
 
 
 int Rf_add_Session_Id(AAAMessage *msg, str data);

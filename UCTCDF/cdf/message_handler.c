@@ -26,11 +26,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define START 1
-#define INTERIM 2
-#define STOP 3
-#define EVENT 4
-
 #include "message_handler.h"
 #include "../cdp/peermanager.h"
 #include "../cdp/timer.h"
@@ -313,7 +308,7 @@ void msg_handler(char * subscriber, int msg_type, int *result, int cid, int *crd
 	
 		case EVENT:
 			//not used
-			LOG(L_INFO,"EVENT - ACR received.\n");	
+			LOG(L_INFO,"EVENT - ACR received for %s.\n", subscriber);
 
 			*crdtpsec = 0;
 			*crdtpMb = 0;
