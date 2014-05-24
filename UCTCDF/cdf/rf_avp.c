@@ -319,6 +319,25 @@ inline int Rf_get_accounting_record_type(AAAMessage *msg, int *data)
 }
 
 /**
+ * Returns the AVP_Accounting_Record_Number AVP from a Diameter message.
+ * @param msg - the Diameter message
+ * @returns 1 on success or 0 on error
+ */
+inline int Rf_get_accounting_record_number(AAAMessage *msg, int *data)
+{
+	AAA_AVP *avp;
+	avp = Rf_get_avp(msg,AVP_Accounting_Record_Number,0);
+	if (!avp)
+	{
+	LOG(L_ERR,"ERR:Rf_get_accounting_record_number: AVP_Accounting_Record_Number not found\n");
+	return 0;
+	}
+	*data = get_4bytes(avp->data.s);
+	return 1;
+
+}
+
+/**
  * Returns the AVP_Call_Record_Id AVP from a Diameter message.
  * @param msg - the Diameter message
  * @returns 1 on success or 0 on error
@@ -329,7 +348,7 @@ inline int Rf_get_call_record_id(AAAMessage *msg, int *data)
 	avp = Rf_get_avp(msg,AVP_Call_Record_Id,0);
 	if (!avp)
 	{
-	LOG(L_ERR,"ERR:Ro_get_call_record_id: AVP_Call_Record_Id not found\n");
+	LOG(L_ERR,"ERR:Rf_get_call_record_id: AVP_Call_Record_Id not found\n");
 	return 0;
 	}
 	*data = get_4bytes(avp->data.s); 
@@ -507,6 +526,7 @@ inline int Rf_get_subscriber(AAAMessage *msg, char **data)
 	if (!avp)
 	{
 	LOG(L_ERR,"ERR:Rf_get_subscriber: AVP_Subscriber not found\n");
+	*data = NULL;
 	return 0;
 	}
 	*data = avp->data.s;
@@ -514,3 +534,40 @@ inline int Rf_get_subscriber(AAAMessage *msg, char **data)
 }
 
 
+/**
+ * Adds a user name AVP.
+ * @param msg - the Diameter message to add to.
+ * @param data - the value for the AVP payload
+ * @returns 1 on success or 0 on error
+ */
+
+inline int Rf_add_user(AAAMessage *msg, str data)
+{
+	return
+	Rf_add_avp(msg,data.s,data.len,
+		AVP_User_Name,
+		AAA_AVP_FLAG_MANDATORY,
+		0,
+		AVP_DUPLICATE_DATA,
+		__FUNCTION__);
+}
+
+
+/**
+ * Returns the AVP_User_Name AVP from a Diameter message.
+ * @param msg - the Diameter message
+ * @returns 1 on success or 0 on error
+ */
+inline int Rf_get_user(AAAMessage *msg, char **data)
+{
+	AAA_AVP *avp;
+	avp = Rf_get_avp(msg,AVP_User_Name,0);
+	if (!avp)
+	{
+	LOG(L_ERR,"ERR:Rf_get_user: AVP_User_Name not found\n");
+	*data = NULL;
+	return 0;
+	}
+	*data = avp->data.s;
+	return 1;
+}
