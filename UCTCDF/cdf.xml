@@ -14,6 +14,6 @@
 	
 	<Acceptor port="3868" bind="127.0.0.1" />
 	
-	<Auth id="3" vendor="10415"/><!-- 3GPP Rf -->
+	<Acct id="3" vendor="0"/><!-- 3GPP Rf -->
 	
 </DiameterPeer>
